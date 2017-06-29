@@ -35,6 +35,8 @@ def working_time(datetime_start, datetime_end):
     return summary_time
 
 def from_this_time(hours):
+    if hours <= 0:
+        raise WorkDateException(_('Wrong hours count'))
     datetime_start = datetime.now()
     try:
         current_date = WorkDate.objects.get(date=datetime_start.date())
